@@ -813,7 +813,8 @@
     function requestAdminAccess() {
       const password = prompt("🔐 Enter admin password:");
       if (password === "GregIsCool") {
-        showModal('adminModal');
+        sessionStorage.setItem('adminAuthorized', 'true');
+        window.location.href = 'admin.html';
       } else {
         alert("❌ Incorrect password. Access denied.");
       }
