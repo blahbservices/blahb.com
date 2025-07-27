@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blahb - Premium Digital Content That Stands Out</title>
+  <title>Blahb - Premium Downloads</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
     :root {
@@ -11,11 +11,11 @@
       --primary-dark: #5a67d8;
       --secondary: #764ba2;
       --accent: #f093fb;
-      --success: #10b981;
-      --warning: #f59e0b;
-      --error: #ef4444;
-      --dark: #1f2937;
-      --light: #f8fafc;
+      --dark: #1a202c;
+      --light: #f7fafc;
+      --success: #48bb78;
+      --warning: #ed8936;
+      --error: #f56565;
       --glass: rgba(255, 255, 255, 0.1);
       --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
       --border: rgba(255, 255, 255, 0.18);
@@ -35,51 +35,39 @@
       overflow-x: hidden;
     }
 
-    .floating-particles {
+    .background-pattern {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
+      opacity: 0.05;
+      background-image: 
+        radial-gradient(circle at 25% 25%, white 2px, transparent 2px),
+        radial-gradient(circle at 75% 75%, white 2px, transparent 2px);
+      background-size: 50px 50px;
       pointer-events: none;
       z-index: -1;
-    }
-
-    .particle {
-      position: absolute;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      animation: float 6s ease-in-out infinite;
-    }
-
-    .particle:nth-child(1) { left: 10%; width: 80px; height: 80px; animation-delay: 0s; }
-    .particle:nth-child(2) { left: 20%; width: 20px; height: 20px; animation-delay: 0.5s; }
-    .particle:nth-child(3) { left: 25%; width: 60px; height: 60px; animation-delay: 1s; }
-    .particle:nth-child(4) { left: 40%; width: 120px; height: 120px; animation-delay: 1.5s; }
-    .particle:nth-child(5) { left: 70%; width: 40px; height: 40px; animation-delay: 2s; }
-    .particle:nth-child(6) { left: 80%; width: 100px; height: 100px; animation-delay: 2.5s; }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.5; }
-      50% { transform: translateY(-100px) rotate(180deg); opacity: 0.8; }
     }
 
     header {
       backdrop-filter: blur(20px);
       background: var(--glass);
       border-bottom: 1px solid var(--border);
-      padding: 1rem 2rem;
+      padding: 1.5rem 2rem;
       position: sticky;
       top: 0;
       z-index: 100;
     }
 
     .header-content {
-      max-width: 1400px;
+      max-width: 1200px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
 
     .logo {
@@ -87,449 +75,303 @@
       align-items: center;
       gap: 0.5rem;
       color: white;
-      font-size: 2rem;
-      font-weight: 900;
-      letter-spacing: -1px;
+      font-size: 1.5rem;
+      font-weight: 700;
     }
 
     .logo i {
-      font-size: 2.5rem;
-      background: linear-gradient(45deg, var(--accent), #fff);
+      font-size: 2rem;
+      background: linear-gradient(45deg, var(--accent), white);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: pulse 2s ease-in-out infinite;
     }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-    }
-
-    .header-cta {
-      background: linear-gradient(45deg, #ff0000, #cc0000);
-      color: white;
-      padding: 0.75rem 2rem;
-      border: none;
-      border-radius: 50px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .header-cta:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(255, 0, 0, 0.6);
-    }
-
-    .hero-section {
-      text-align: center;
-      padding: 6rem 2rem 4rem;
-      max-width: 1400px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      color: white;
-      padding: 0.5rem 1.5rem;
-      border-radius: 50px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 2rem;
-      border: 1px solid var(--border);
-    }
-
-    .hero-title {
-      font-size: 4.5rem;
-      font-weight: 900;
-      line-height: 1.1;
-      margin-bottom: 2rem;
-      background: linear-gradient(45deg, #fff, var(--accent), #fff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      letter-spacing: -2px;
-    }
-
-    .hero-subtitle {
-      font-size: 1.5rem;
-      color: rgba(255, 255, 255, 0.9);
-      margin-bottom: 3rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.6;
-    }
-
-    .hero-cta-group {
+    .nav-buttons {
       display: flex;
-      gap: 1.5rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 4rem;
+      gap: 1rem;
+      align-items: center;
     }
 
-    .cta-primary {
-      background: linear-gradient(45deg, var(--success), #34d399);
-      color: white;
-      padding: 1.2rem 3rem;
+    .btn {
+      padding: 0.75rem 1.5rem;
       border: none;
       border-radius: 50px;
-      font-size: 1.1rem;
-      font-weight: 700;
+      font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
+      font-size: 0.9rem;
     }
 
-    .cta-primary:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 15px 40px rgba(16, 185, 129, 0.6);
+    .btn-primary {
+      background: linear-gradient(45deg, var(--accent), var(--primary));
+      color: white;
+      box-shadow: var(--shadow);
     }
 
-    .cta-secondary {
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.5);
+    }
+
+    .btn-glass {
       background: var(--glass);
       color: white;
-      padding: 1.2rem 3rem;
-      border: 2px solid var(--border);
-      border-radius: 50px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
+      border: 1px solid var(--border);
       backdrop-filter: blur(10px);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
     }
 
-    .cta-secondary:hover {
+    .btn-glass:hover {
       background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .admin-btn {
+      background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+      color: white;
+    }
+
+    .admin-btn:hover {
       transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(238, 90, 36, 0.4);
     }
 
-    .social-proof {
-      display: flex;
-      justify-content: center;
-      gap: 3rem;
-      flex-wrap: wrap;
-      color: rgba(255, 255, 255, 0.8);
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
     }
 
-    .proof-item {
+    .hero {
       text-align: center;
+      margin-bottom: 3rem;
+      color: white;
     }
 
-    .proof-number {
-      font-size: 2.5rem;
-      font-weight: 900;
-      display: block;
-      background: linear-gradient(45deg, #fff, var(--accent));
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, white, var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .proof-label {
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      opacity: 0.7;
-    }
-
-    .features-section {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(20px);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 4rem 2rem;
-      margin: 2rem 0;
-    }
-
-    .features-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .features-title {
-      font-size: 3rem;
-      font-weight: 800;
-      color: white;
-      margin-bottom: 1rem;
-    }
-
-    .features-subtitle {
+    .hero p {
       font-size: 1.2rem;
-      color: rgba(255, 255, 255, 0.8);
-      margin-bottom: 3rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+      opacity: 0.9;
+      margin-bottom: 2rem;
     }
 
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    .stats {
+      display: flex;
+      justify-content: center;
       gap: 2rem;
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
     }
 
-    .feature-card {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
+    .stat-item {
+      text-align: center;
+      color: white;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .filter-section {
+      background: var(--glass);
+      backdrop-filter: blur(20px);
       border: 1px solid var(--border);
       border-radius: 20px;
-      padding: 2rem;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-5px);
-      background: rgba(255, 255, 255, 0.15);
-    }
-
-    .feature-icon {
-      font-size: 3rem;
-      background: linear-gradient(45deg, var(--accent), #fff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 1rem;
-    }
-
-    .feature-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: white;
-      margin-bottom: 1rem;
-    }
-
-    .feature-desc {
-      color: rgba(255, 255, 255, 0.8);
-      line-height: 1.6;
-    }
-
-    .gallery-section {
-      padding: 4rem 2rem;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .section-title {
-      font-size: 3rem;
-      font-weight: 800;
-      color: white;
-      margin-bottom: 1rem;
-    }
-
-    .section-subtitle {
-      font-size: 1.2rem;
-      color: rgba(255, 255, 255, 0.8);
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .filter-tabs {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 3rem;
-      flex-wrap: wrap;
-    }
-
-    .filter-tab {
-      padding: 1rem 2rem;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      border-radius: 50px;
-      background: transparent;
-      color: white;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .filter-tab:hover,
-    .filter-tab.active {
-      background: white;
-      color: var(--primary);
-      border-color: white;
-      transform: translateY(-2px);
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 2rem;
-    }
-
-    .product-card {
-      background: white;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: all 0.3s ease;
-      position: relative;
-    }
-
-    .product-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    }
-
-    .product-badge {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: linear-gradient(45deg, var(--success), #34d399);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 50px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      z-index: 10;
-    }
-
-    .product-preview {
-      height: 200px;
-      background: #f1f5f9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .product-preview img,
-    .product-preview video,
-    .product-preview audio {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .product-preview .placeholder {
-      font-size: 3rem;
-      color: #cbd5e1;
-    }
-
-    .product-info {
       padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
     }
 
-    .product-title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: var(--dark);
-    }
-
-    .product-meta {
+    .filter-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 1rem;
+      color: white;
+    }
+
+    .filter-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 0.6rem 1.2rem;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 25px;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: white;
+      color: var(--primary);
+      border-color: white;
+      transform: translateY(-1px);
+    }
+
+    .search-box {
+      position: relative;
+      max-width: 300px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 2.5rem;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
       font-size: 0.9rem;
-      color: #64748b;
+    }
+
+    .search-input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .file-card {
+      background: white;
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .file-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px 0 rgba(31, 38, 135, 0.3);
+    }
+
+    .file-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+    }
+
+    .file-type-icon {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    .preview-container {
+      margin-bottom: 1rem;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #f8f9fa;
+      min-height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .preview {
+      max-width: 100%;
+      max-height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .preview-placeholder {
+      color: #6c757d;
+      font-size: 3rem;
+      opacity: 0.3;
+    }
+
+    .file-info h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+
+    .file-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      font-size: 0.85rem;
+      color: #6c757d;
+    }
+
+    .file-size {
+      background: #e9ecef;
+      padding: 0.25rem 0.5rem;
+      border-radius: 12px;
     }
 
     .download-btn {
       width: 100%;
       background: linear-gradient(45deg, var(--primary), var(--secondary));
       color: white;
-      padding: 1rem;
-      border: none;
+      text-align: center;
+      padding: 0.75rem;
       border-radius: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.3s ease;
       text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
     }
 
     .download-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-    }
-
-    .cta-section {
-      background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
-      padding: 6rem 2rem;
-      text-align: center;
-      margin: 4rem 0 0;
-    }
-
-    .cta-container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .cta-title {
-      font-size: 3.5rem;
-      font-weight: 900;
-      color: white;
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
-    }
-
-    .cta-description {
-      font-size: 1.3rem;
-      color: rgba(255, 255, 255, 0.8);
-      margin-bottom: 3rem;
-      line-height: 1.6;
-    }
-
-    .cta-button {
-      background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-      color: white;
-      padding: 1.5rem 4rem;
-      border: none;
-      border-radius: 50px;
-      font-size: 1.2rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      box-shadow: 0 8px 30px rgba(255, 107, 107, 0.4);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .cta-button:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 15px 40px rgba(255, 107, 107, 0.6);
     }
 
     .modal {
@@ -544,6 +386,7 @@
       justify-content: center;
       align-items: center;
       z-index: 1000;
+      animation: fadeIn 0.3s ease;
     }
 
     .modal-content {
@@ -553,12 +396,69 @@
       width: 90%;
       max-width: 500px;
       position: relative;
+      animation: slideUp 0.3s ease;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-header h2 {
+      color: var(--dark);
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .close-btn {
+      background: #e9ecef;
+      border: none;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .close-btn:hover {
+      background: var(--error);
+      color: white;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid #e9ecef;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--primary);
     }
 
     .loading {
       display: none;
       text-align: center;
-      padding: 3rem;
+      padding: 2rem;
       color: white;
     }
 
@@ -566,10 +466,32 @@
       border: 4px solid rgba(255, 255, 255, 0.3);
       border-radius: 50%;
       border-top: 4px solid white;
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       animation: spin 1s linear infinite;
       margin: 0 auto 1rem;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 3rem;
+      color: white;
+    }
+
+    .empty-state i {
+      font-size: 4rem;
+      opacity: 0.3;
+      margin-bottom: 1rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     @keyframes spin {
@@ -577,46 +499,24 @@
       100% { transform: rotate(360deg); }
     }
 
-    .empty-state {
-      text-align: center;
-      padding: 4rem 2rem;
-      color: white;
-    }
-
-    .empty-state i {
-      font-size: 5rem;
-      opacity: 0.3;
-      margin-bottom: 1.5rem;
-    }
-
     @media (max-width: 768px) {
-      .hero-title {
-        font-size: 3rem;
-      }
-
-      .hero-cta-group {
+      .header-content {
         flex-direction: column;
-        align-items: center;
+        text-align: center;
       }
 
-      .cta-primary,
-      .cta-secondary {
-        width: 100%;
-        max-width: 300px;
+      .hero h1 {
+        font-size: 2rem;
       }
 
-      .social-proof {
+      .stats {
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 1rem;
       }
 
-      .features-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .filter-tabs {
+      .filter-header {
         flex-direction: column;
-        align-items: center;
+        gap: 1rem;
       }
 
       .gallery {
@@ -626,186 +526,126 @@
   </style>
 </head>
 <body>
-  <div class="floating-particles">
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-  </div>
-
+  <div class="background-pattern"></div>
+  
   <header>
     <div class="header-content">
       <div class="logo">
-        <i class="fas fa-bolt"></i>
+        <i class="fas fa-cloud-download-alt"></i>
         <span>Blahb</span>
       </div>
-      <a href="https://www.youtube.com/@gregoryrockstar1992" target="_blank" class="header-cta">
-        <i class="fab fa-youtube"></i> YouTube
-      </a>
+      <div class="nav-buttons">
+        <button class="btn btn-glass" onclick="showModal('about')">
+          <i class="fas fa-user"></i> About
+        </button>
+        <button class="btn btn-glass" onclick="showModal('games')">
+          <i class="fas fa-gamepad"></i> Games
+        </button>
+        <button class="btn admin-btn" onclick="requestAdminAccess()">
+          <i class="fas fa-cog"></i> Admin
+        </button>
+      </div>
     </div>
   </header>
 
-  <section class="hero-section">
-    <div class="hero-badge">
-      ✨ Curated Premium Content Collection
-    </div>
-    <h1 class="hero-title">Premium Digital Content That Makes You Stand Out</h1>
-    <p class="hero-subtitle">
-      Discover stunning wallpapers, exclusive ringtones, and captivating videos that transform your digital experience. Quality content that speaks volumes.
-    </p>
-    <div class="hero-cta-group">
-      <a href="#gallery" class="cta-primary" onclick="scrollToGallery()">
-        <i class="fas fa-download"></i> Start Downloading
-      </a>
-      <a href="#features" class="cta-secondary">
-        <i class="fas fa-play"></i> See What's Inside
-      </a>
-    </div>
-    <div class="social-proof">
-      <div class="proof-item">
-        <span class="proof-number">100%</span>
-        <span class="proof-label">Free Access</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="features-section" id="features">
-    <div class="features-container">
-      <h2 class="features-title">Why Choose Blahb?</h2>
-      <p class="features-subtitle">
-        We don't just provide content – we deliver experiences that elevate your digital lifestyle
-      </p>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-gem"></i>
-          </div>
-          <h3 class="feature-title">Premium Quality</h3>
-          <p class="feature-desc">Every file is handpicked and optimized for the best experience across all your devices.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-bolt"></i>
-          </div>
-          <h3 class="feature-title">Lightning Fast</h3>
-          <p class="feature-desc">Instant downloads with no waiting time. Get what you want, when you want it.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-shield-alt"></i>
-          </div>
-          <h3 class="feature-title">100% Safe</h3>
-          <p class="feature-desc">All content is verified and completely safe. No malware, no spam, just pure quality.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-magic"></i>
-          </div>
-          <h3 class="feature-title">Exclusive Content</h3>
-          <p class="feature-desc">Access unique designs and sounds you won't find anywhere else on the internet.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-mobile-alt"></i>
-          </div>
-          <h3 class="feature-title">All Devices</h3>
-          <p class="feature-desc">Perfect compatibility with phones, tablets, desktops, and smart devices.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-heart"></i>
-          </div>
-          <h3 class="feature-title">Always Free</h3>
-          <p class="feature-desc">Premium quality doesn't have to cost premium prices. Everything is completely free.</p>
+  <main>
+    <section class="hero">
+      <h1>Premium Digital Downloads</h1>
+      <p>Discover high-quality wallpapers, ringtones, and videos curated just for you</p>
+      <div class="stats">
+        <div class="stat-item">
+          <span class="stat-number" id="totalFiles">0</span>
+          <span class="stat-label">Total Files</span>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="gallery-section" id="gallery">
-    <div class="section-header">
-      <h2 class="section-title">Browse Our Collection</h2>
-      <p class="section-subtitle">
-        Thousands of premium files waiting for you. Find the perfect content that matches your style.
-      </p>
-    </div>
-
-    <div class="filter-tabs">
-      <button class="filter-tab active" onclick="filterFiles('all')" data-type="all">
-        <i class="fas fa-th"></i> All Content
-      </button>
-      <button class="filter-tab" onclick="filterFiles('image')" data-type="image">
-        <i class="fas fa-image"></i> Wallpapers
-      </button>
-      <button class="filter-tab" onclick="filterFiles('audio')" data-type="audio">
-        <i class="fas fa-music"></i> Ringtones
-      </button>
-      <button class="filter-tab" onclick="filterFiles('video')" data-type="video">
-        <i class="fas fa-video"></i> Videos
-      </button>
-    </div>
+    <section class="filter-section">
+      <div class="filter-header">
+        <div class="filter-buttons">
+          <button class="filter-btn active" onclick="filterFiles('all')" data-type="all">
+            <i class="fas fa-th"></i> All Files
+          </button>
+          <button class="filter-btn" onclick="filterFiles('image')" data-type="image">
+            <i class="fas fa-image"></i> Wallpapers
+          </button>
+          <button class="filter-btn" onclick="filterFiles('audio')" data-type="audio">
+            <i class="fas fa-music"></i> Ringtones
+          </button>
+          <button class="filter-btn" onclick="filterFiles('video')" data-type="video">
+            <i class="fas fa-video"></i> Videos
+          </button>
+        </div>
+        <div class="search-box">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" class="search-input" placeholder="Search files..." onkeyup="searchFiles(this.value)">
+        </div>
+      </div>
+    </section>
 
     <div class="loading" id="loading">
       <div class="spinner"></div>
-      <h3>Loading amazing content...</h3>
-      <p>Preparing the best files just for you</p>
+      <p>Loading files...</p>
     </div>
 
-    <div class="gallery" id="gallery-grid"></div>
+    <div class="gallery" id="gallery"></div>
 
     <div class="empty-state" id="emptyState" style="display: none;">
-      <i class="fas fa-search"></i>
-      <h3>No content found</h3>
-      <p>Try browsing a different category or check back soon for new uploads</p>
+      <i class="fas fa-folder-open"></i>
+      <h3>No files found</h3>
+      <p>Try adjusting your search or filter criteria</p>
     </div>
-  </section>
-
-  <section class="cta-section">
-    <div class="cta-container">
-      <h2 class="cta-title">Ready to Transform Your Digital Experience?</h2>
-      <p class="cta-description">
-        Join thousands of users who have already discovered the Blahb difference. Start downloading premium content today and see why we're the #1 choice for digital enthusiasts.
-      </p>
-      <a href="#gallery" class="cta-button" onclick="scrollToGallery()">
-        <i class="fas fa-rocket"></i> Get Started Now
-      </a>
-    </div>
-  </section>
+  </main>
 
   <!-- Admin Modal -->
   <div class="modal" id="adminModal">
     <div class="modal-content">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-        <h2 style="color: var(--dark);"><i class="fas fa-cog"></i> Content Manager</h2>
-        <button onclick="closeModal('adminModal')" style="background: #e5e7eb; border: none; border-radius: 50%; width: 35px; height: 35px; cursor: pointer;">
+      <div class="modal-header">
+        <h2><i class="fas fa-shield-alt"></i> Admin Panel</h2>
+        <button class="close-btn" onclick="closeModal('adminModal')">
           <i class="fas fa-times"></i>
         </button>
       </div>
       <form onsubmit="submitFile(event)">
-        <div style="margin-bottom: 1rem;">
-          <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Content Name</label>
-          <input type="text" id="fileName" placeholder="Enter content name" required style="width: 100%; padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px;">
+        <div class="form-group">
+          <label class="form-label">File Name</label>
+          <input type="text" class="form-input" id="fileName" placeholder="Enter file name" required>
         </div>
-        <div style="margin-bottom: 1rem;">
-          <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Content Type</label>
-          <select id="fileType" required style="width: 100%; padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px;">
-            <option value="image">🖼️ Wallpaper</option>
-            <option value="audio">🎵 Ringtone</option>
-            <option value="video">🎬 Video</option>
-            <option value="about">📝 About Info</option>
+        <div class="form-group">
+          <label class="form-label">File Type</label>
+          <select class="form-input" id="fileType" onchange="toggleContentField()" required>
+            <option value="image">🖼️ Wallpaper (Image)</option>
+            <option value="audio">🎵 Ringtone (Audio)</option>
+            <option value="video">🎬 Video (MP4)</option>
+            <option value="about">📝 About Me Info</option>
             <option value="games">🎮 Games Info</option>
           </select>
         </div>
-        <div style="margin-bottom: 1rem;">
-          <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Content URL</label>
-          <input type="url" id="fileURL" placeholder="Direct download link or content" required style="width: 100%; padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px;">
+        <div class="form-group">
+          <label class="form-label" id="urlLabel">File URL</label>
+          <input type="url" class="form-input" id="fileURL" placeholder="Google Drive direct link" required>
         </div>
-        <button type="submit" class="cta-primary" style="width: 100%; margin: 0;">
-          <i class="fas fa-plus"></i> Add Content
+        <div class="form-group" id="contentGroup" style="display: none;">
+          <label class="form-label">Content Text</label>
+          <textarea class="form-input" id="fileContent" rows="4" placeholder="Enter your text content here..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">
+          <i class="fas fa-plus"></i> Add File
         </button>
       </form>
+    </div>
+  </div>
+
+  <!-- Info Modal -->
+  <div class="modal" id="infoModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="infoTitle"></h2>
+        <button class="close-btn" onclick="closeModal('infoModal')">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div id="infoContent"></div>
     </div>
   </div>
 
@@ -814,16 +654,10 @@
     let allFiles = [];
     let filteredFiles = [];
 
-    const contentTypeIcons = {
+    const fileTypeIcons = {
       image: 'fas fa-image',
       audio: 'fas fa-music',
       video: 'fas fa-video'
-    };
-
-    const contentTypeBadges = {
-      image: 'HD Wallpaper',
-      audio: 'Premium Audio',
-      video: 'High Quality'
     };
 
     async function fetchFiles() {
@@ -841,4 +675,224 @@
         
         const aboutFile = allFiles.find(f => f.type === 'about');
         const gamesFile = allFiles.find(f => f.type === 'games');
-        window.aboutText = aboutFile ? aboutFile.url : 'Blahb is your premium destination for high-quality digital content. We curate the finest wallpapers, ringt
+        window.aboutText = aboutFile ? aboutFile.url : 'Welcome to Blahb! We provide high-quality digital content including wallpapers, ringtones, and videos for all your devices.';
+        window.gamesText = gamesFile ? gamesFile.url : 'Exciting games are coming soon! Stay tuned for updates on our latest gaming projects and releases.';
+        
+      } catch (error) {
+        console.error('Error fetching files:', error);
+        showError('Failed to load files. Please try again later.');
+      } finally {
+        showLoading(false);
+      }
+    }
+
+    function createPreview(file) {
+      if (file.type === 'image') {
+        return `<img class="preview" src="${file.url}" alt="${file.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                <div class="preview-placeholder" style="display: none;"><i class="fas fa-image"></i></div>`;
+      } else if (file.type === 'audio') {
+        return `<audio class="preview" controls src="${file.url}" preload="metadata"></audio>`;
+      } else if (file.type === 'video') {
+        return `<video class="preview" controls src="${file.url}" preload="metadata"></video>`;
+      }
+      return '<div class="preview-placeholder"><i class="fas fa-file"></i></div>';
+    }
+
+    function createCard(file) {
+      const fileSize = '2.1 MB'; // Placeholder size
+      const uploadDate = new Date().toLocaleDateString();
+      
+      return `
+        <div class="file-card" data-type="${file.type}" data-name="${file.name.toLowerCase()}">
+          <div class="file-type-icon">
+            <i class="${fileTypeIcons[file.type] || 'fas fa-file'}"></i>
+          </div>
+          <div class="preview-container">
+            ${createPreview(file)}
+          </div>
+          <div class="file-info">
+            <h3>${file.name}</h3>
+            <div class="file-meta">
+              <span class="upload-date">
+                <i class="fas fa-calendar"></i> ${uploadDate}
+              </span>
+              <span class="file-size">${fileSize}</span>
+            </div>
+            <a href="${file.url}" class="download-btn" target="_blank" rel="noopener" onclick="trackDownload('${file.name}')">
+              <i class="fas fa-download"></i>
+              Download
+            </a>
+          </div>
+        </div>
+      `;
+    }
+
+    function displayFiles(files) {
+      const gallery = document.getElementById("gallery");
+      const emptyState = document.getElementById("emptyState");
+      
+      if (files.length === 0) {
+        gallery.innerHTML = '';
+        emptyState.style.display = 'block';
+      } else {
+        gallery.innerHTML = files.map(createCard).join('');
+        emptyState.style.display = 'none';
+      }
+    }
+
+    function filterFiles(type) {
+      // Update active filter button
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.querySelector(`[data-type="${type}"]`).classList.add('active');
+      
+      // Filter files
+      if (type === 'all') {
+        filteredFiles = allFiles.filter(f => ['image', 'audio', 'video'].includes(f.type));
+      } else {
+        filteredFiles = allFiles.filter(f => f.type === type);
+      }
+      
+      displayFiles(filteredFiles);
+    }
+
+    function searchFiles(query) {
+      const searchTerm = query.toLowerCase().trim();
+      if (searchTerm === '') {
+        const activeFilter = document.querySelector('.filter-btn.active').dataset.type;
+        filterFiles(activeFilter);
+      } else {
+        const searchResults = filteredFiles.filter(file => 
+          file.name.toLowerCase().includes(searchTerm)
+        );
+        displayFiles(searchResults);
+      }
+    }
+
+    function updateStats() {
+      const totalFiles = allFiles.filter(f => ['image', 'audio', 'video'].includes(f.type)).length;
+      document.getElementById('totalFiles').textContent = totalFiles;
+    }
+
+    function showLoading(show) {
+      document.getElementById('loading').style.display = show ? 'block' : 'none';
+    }
+
+    function showError(message) {
+      // You could implement a toast notification here
+      alert(message);
+    }
+
+    function toggleContentField() {
+      const fileType = document.getElementById("fileType").value;
+      const urlGroup = document.querySelector('#fileURL').parentElement;
+      const contentGroup = document.getElementById("contentGroup");
+      const urlLabel = document.getElementById("urlLabel");
+      const fileURL = document.getElementById("fileURL");
+      const fileContent = document.getElementById("fileContent");
+      
+      if (fileType === 'about' || fileType === 'games') {
+        urlGroup.style.display = 'none';
+        contentGroup.style.display = 'block';
+        fileURL.required = false;
+        fileContent.required = true;
+      } else {
+        urlGroup.style.display = 'block';
+        contentGroup.style.display = 'none';
+        fileURL.required = true;
+        fileContent.required = false;
+        urlLabel.textContent = 'File URL';
+      }
+    }
+
+    function requestAdminAccess() {
+      const password = prompt("🔐 Enter admin password:");
+      if (password === "admin123") {
+        showModal('adminModal');
+      } else {
+        alert("❌ Incorrect password. Access denied.");
+      }
+    }
+
+    function showModal(modalId) {
+      if (modalId === 'about' || modalId === 'games') {
+        document.getElementById('infoTitle').innerHTML = modalId === 'about' ? 
+          '<i class="fas fa-user"></i> About Me' : 
+          '<i class="fas fa-gamepad"></i> Upcoming Games';
+        document.getElementById('infoContent').innerHTML = `<p>${modalId === 'about' ? window.aboutText : window.gamesText}</p>`;
+        document.getElementById('infoModal').style.display = 'flex';
+      } else {
+        document.getElementById(modalId).style.display = 'flex';
+      }
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+      
+      // Clear form if closing admin modal
+      if (modalId === 'adminModal') {
+        document.getElementById('fileName').value = '';
+        document.getElementById('fileType').value = 'image';
+        document.getElementById('fileURL').value = '';
+        document.getElementById('fileContent').value = '';
+        toggleContentField(); // Reset form layout
+      }
+    }
+
+    async function submitFile(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById("fileName").value.trim();
+      const type = document.getElementById("fileType").value;
+      let url;
+      
+      // Get the appropriate content based on file type
+      if (type === 'about' || type === 'games') {
+        url = document.getElementById("fileContent").value.trim();
+      } else {
+        url = document.getElementById("fileURL").value.trim();
+      }
+
+      if (!name || !type || !url) {
+        alert("⚠️ Please fill out all fields.");
+        return;
+      }
+
+      try {
+        const response = await fetch(apiURL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ data: [{ name, type, url }] })
+        });
+
+        if (response.ok) {
+          alert("✅ File added successfully!");
+          closeModal('adminModal');
+          fetchFiles(); // Refresh the gallery
+        } else {
+          throw new Error('Failed to save file');
+        }
+      } catch (error) {
+        console.error('Error saving file:', error);
+        alert("❌ Error saving file. Please try again.");
+      }
+    }
+
+    // Close modals when clicking outside
+    window.onclick = function(event) {
+      const modals = document.querySelectorAll('.modal');
+      modals.forEach(modal => {
+        if (event.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+    }
+
+    // Initialize the application
+    fetchFiles();
+  </script>
+</body>
+</html>
