@@ -325,12 +325,41 @@
       background: white;
       border-radius: 20px;
       padding: 2rem;
-      width: 90%;
-      max-width: 600px;
+      width: 95%;
+      max-width: 1200px;
       position: relative;
       animation: slideUp 0.3s ease;
-      max-height: 80vh;
+      max-height: 90vh;
       overflow-y: auto;
+    }
+
+    .games-admin-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .game-admin-card {
+      background: #f8f9fa;
+      border-radius: 15px;
+      padding: 1.5rem;
+      border: 2px solid #e9ecef;
+      transition: all 0.3s ease;
+    }
+
+    .game-admin-card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 4px 15px rgba(74, 144, 226, 0.1);
+    }
+
+    .game-admin-card h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.2rem;
     }
 
     .modal-header {
@@ -465,57 +494,7 @@
       </div>
       
       <div class="games-grid" id="gamesGrid">
-        <!-- Sample game cards - these would be populated from your database -->
-        <div class="game-card">
-          <div class="placeholder-image">
-            <i class="fas fa-gamepad"></i>
-          </div>
-          <div class="game-title">
-            <i class="fas fa-star"></i>
-            Project Alpha
-          </div>
-          <div class="game-description">
-            An exciting adventure game featuring stunning graphics and immersive gameplay. Explore vast worlds and uncover hidden secrets in this epic journey.
-          </div>
-          <div class="game-meta">
-            <div class="release-date">Q3 2025</div>
-            <div class="game-status status-development">In Development</div>
-          </div>
-        </div>
-
-        <div class="game-card">
-          <div class="placeholder-image">
-            <i class="fas fa-rocket"></i>
-          </div>
-          <div class="game-title">
-            <i class="fas fa-bolt"></i>
-            Space Runner
-          </div>
-          <div class="game-description">
-            Fast-paced space exploration game with multiplayer support. Race through asteroid fields and compete with players worldwide.
-          </div>
-          <div class="game-meta">
-            <div class="release-date">Q4 2025</div>
-            <div class="game-status status-beta">Beta Testing</div>
-          </div>
-        </div>
-
-        <div class="game-card">
-          <div class="placeholder-image">
-            <i class="fas fa-puzzle-piece"></i>
-          </div>
-          <div class="game-title">
-            <i class="fas fa-brain"></i>
-            Mind Maze
-          </div>
-          <div class="game-description">
-            Challenge your mind with complex puzzles and brain teasers. Features adaptive difficulty and hundreds of unique challenges.
-          </div>
-          <div class="game-meta">
-            <div class="release-date">Q1 2026</div>
-            <div class="game-status status-coming-soon">Coming Soon</div>
-          </div>
-        </div>
+        <!-- Game cards will be populated from database -->
       </div>
     </div>
   </main>
@@ -524,18 +503,132 @@
   <div class="modal" id="adminModal">
     <div class="modal-content">
       <div class="modal-header">
-        <h2><i class="fas fa-edit"></i> Edit Games Page</h2>
+        <h2><i class="fas fa-edit"></i> Edit Games</h2>
         <button class="close-btn" onclick="closeModal('adminModal')">
           <i class="fas fa-times"></i>
         </button>
       </div>
       <form onsubmit="updateGamesContent(event)">
-        <div class="form-group">
-          <label class="form-label">Games Page Content</label>
-          <textarea class="form-input" id="gamesTextArea" rows="10" placeholder="Enter the content for the upcoming games page..." required></textarea>
+        <div class="games-admin-grid">
+          <!-- Game 1 -->
+          <div class="game-admin-card">
+            <h3><i class="fas fa-gamepad"></i> Game 1</h3>
+            <div class="form-group">
+              <label class="form-label">Game Title</label>
+              <input type="text" class="form-input" id="game1Title" placeholder="Enter game title...">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Game Image URL</label>
+              <input type="url" class="form-input" id="game1Image" placeholder="https://example.com/image.jpg">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Game Description</label>
+              <textarea class="form-input" id="game1Description" rows="4" placeholder="Describe your game..."></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Release Date</label>
+              <input type="text" class="form-input" id="game1Date" placeholder="Q3 2025">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Status</label>
+              <select class="form-input" id="game1Status">
+                <option value="development">In Development</option>
+                <option value="beta">Beta Testing</option>
+                <option value="coming-soon">Coming Soon</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Game 2 -->
+          <div class="game-admin-card">
+            <h3><i class="fas fa-rocket"></i> Game 2</h3>
+            <div class="form-group">
+              <label class="form-label">Game Title</label>
+              <input type="text" class="form-input" id="game2Title" placeholder="Enter game title...">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Game Image URL</label>
+              <input type="url" class="form-input" id="game2Image" placeholder="https://example.com/image.jpg">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Game Description</label>
+              <textarea class="form-input" id="game2Description" rows="4" placeholder="Describe your game..."></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Release Date</label>
+              <input type="text" class="form-input" id="game2Date" placeholder="Q4 2025">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Status</label>
+              <select class="form-input" id="game2Status">
+                <option value="development">In Development</option>
+                <option value="beta">Beta Testing</option>
+                <option value="coming-soon">Coming Soon</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Game 3 -->
+          <div class="game-admin-card">
+            <h3><i class="fas fa-puzzle-piece"></i> Game 3</h3>
+            <div class="form-group">
+              <label class="form-label">Game Title</label>
+              <input type="text" class="form-input" id="game3Title" placeholder="Enter game title...">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Game Image URL</label>
+              <input type="url" class="form-input" id="game3Image" placeholder="https://example.com/image.jpg">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Game Description</label>
+              <textarea class="form-input" id="game3Description" rows="4" placeholder="Describe your game..."></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Release Date</label>
+              <input type="text" class="form-input" id="game3Date" placeholder="Q1 2026">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Status</label>
+              <select class="form-input" id="game3Status">
+                <option value="development">In Development</option>
+                <option value="beta">Beta Testing</option>
+                <option value="coming-soon">Coming Soon</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Game 4 -->
+          <div class="game-admin-card">
+            <h3><i class="fas fa-star"></i> Game 4</h3>
+            <div class="form-group">
+              <label class="form-label">Game Title</label>
+              <input type="text" class="form-input" id="game4Title" placeholder="Enter game title...">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Game Image URL</label>
+              <input type="url" class="form-input" id="game4Image" placeholder="https://example.com/image.jpg">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Game Description</label>
+              <textarea class="form-input" id="game4Description" rows="4" placeholder="Describe your game..."></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Release Date</label>
+              <input type="text" class="form-input" id="game4Date" placeholder="Q2 2026">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Status</label>
+              <select class="form-input" id="game4Status">
+                <option value="development">In Development</option>
+                <option value="beta">Beta Testing</option>
+                <option value="coming-soon">Coming Soon</option>
+              </select>
+            </div>
+          </div>
         </div>
-        <button type="submit" class="btn btn-primary" style="width: 100%;">
-          <i class="fas fa-save"></i> Update Content
+        
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 2rem;">
+          <i class="fas fa-save"></i> Update All Games
         </button>
       </form>
     </div>
@@ -551,8 +644,9 @@
         if (!response.ok) throw new Error('Failed to fetch content');
         
         const data = await response.json();
-        const gamesData = data.find(item => item.type === 'games');
         
+        // Load general games content
+        const gamesData = data.find(item => item.type === 'games');
         const content = gamesData ? gamesData.url : `
           <h2>🎮 Welcome to Our Gaming Universe!</h2>
           <p>We're working on some incredible games that will blow your mind! Our development team is putting together experiences that combine cutting-edge technology with engaging gameplay.</p>
@@ -570,11 +664,92 @@
         
         document.getElementById('gamesContent').innerHTML = content;
         
+        // Load individual game cards
+        loadGameCards(data);
+        
       } catch (error) {
         console.error('Error loading games content:', error);
         document.getElementById('gamesContent').innerHTML = '<p>Error loading content. Please try again later.</p>';
       } finally {
         showLoading(false);
+      }
+    }
+
+    function loadGameCards(data) {
+      const gamesGrid = document.getElementById('gamesGrid');
+      let gameCards = '';
+      
+      for (let i = 1; i <= 4; i++) {
+        const gameData = data.find(item => item.type === `game${i}`);
+        
+        if (gameData) {
+          try {
+            const game = JSON.parse(gameData.url);
+            gameCards += createGameCard(game);
+          } catch (e) {
+            // If parsing fails, show empty card
+            gameCards += createEmptyGameCard(i);
+          }
+        } else {
+          gameCards += createEmptyGameCard(i);
+        }
+      }
+      
+      gamesGrid.innerHTML = gameCards;
+    }
+
+    function createGameCard(game) {
+      const statusClass = `status-${game.status}`;
+      const imageHtml = game.image ? 
+        `<img class="game-image" src="${game.image}" alt="${game.title}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+         <div class="placeholder-image" style="display: none;"><i class="fas fa-gamepad"></i></div>` :
+        `<div class="placeholder-image"><i class="fas fa-gamepad"></i></div>`;
+      
+      return `
+        <div class="game-card">
+          ${imageHtml}
+          <div class="game-title">
+            <i class="fas fa-star"></i>
+            ${game.title || 'Untitled Game'}
+          </div>
+          <div class="game-description">
+            ${game.description || 'No description available.'}
+          </div>
+          <div class="game-meta">
+            <div class="release-date">${game.date || 'TBA'}</div>
+            <div class="game-status ${statusClass}">${getStatusText(game.status)}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function createEmptyGameCard(gameNumber) {
+      return `
+        <div class="game-card">
+          <div class="placeholder-image">
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="game-title">
+            <i class="fas fa-star"></i>
+            Game Slot ${gameNumber}
+          </div>
+          <div class="game-description">
+            Use the admin panel to add your game here!
+          </div>
+          <div class="game-meta">
+            <div class="release-date">TBA</div>
+            <div class="game-status status-development">Coming Soon</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function getStatusText(status) {
+      switch(status) {
+        case 'development': return 'In Development';
+        case 'beta': return 'Beta Testing';
+        case 'coming-soon': return 'Coming Soon';
+        default: return 'In Development';
       }
     }
 
@@ -585,13 +760,49 @@
     function requestAdminAccess() {
       const password = prompt("🔐 Enter admin password:");
       if (password === "GregIsCool") {
-        // Load current content into textarea
-        const currentContent = document.getElementById('gamesContent').innerHTML;
-        document.getElementById('gamesTextArea').value = currentContent.replace(/<[^>]*>/g, '').trim();
+        loadAdminData();
         showModal('adminModal');
       } else {
         alert("❌ Incorrect password. Access denied.");
       }
+    }
+
+    async function loadAdminData() {
+      try {
+        const response = await fetch(apiURL);
+        const data = await response.json();
+        
+        // Load data for each game
+        for (let i = 1; i <= 4; i++) {
+          const gameData = data.find(item => item.type === `game${i}`);
+          
+          if (gameData) {
+            try {
+              const game = JSON.parse(gameData.url);
+              document.getElementById(`game${i}Title`).value = game.title || '';
+              document.getElementById(`game${i}Image`).value = game.image || '';
+              document.getElementById(`game${i}Description`).value = game.description || '';
+              document.getElementById(`game${i}Date`).value = game.date || '';
+              document.getElementById(`game${i}Status`).value = game.status || 'development';
+            } catch (e) {
+              // Clear fields if parsing fails
+              clearGameFields(i);
+            }
+          } else {
+            clearGameFields(i);
+          }
+        }
+      } catch (error) {
+        console.error('Error loading admin data:', error);
+      }
+    }
+
+    function clearGameFields(gameNumber) {
+      document.getElementById(`game${gameNumber}Title`).value = '';
+      document.getElementById(`game${gameNumber}Image`).value = '';
+      document.getElementById(`game${gameNumber}Description`).value = '';
+      document.getElementById(`game${gameNumber}Date`).value = '';
+      document.getElementById(`game${gameNumber}Status`).value = 'development';
     }
 
     function showModal(modalId) {
@@ -600,47 +811,57 @@
 
     function closeModal(modalId) {
       document.getElementById(modalId).style.display = 'none';
-      if (modalId === 'adminModal') {
-        document.getElementById('gamesTextArea').value = '';
-      }
     }
 
     async function updateGamesContent(event) {
       event.preventDefault();
       
-      const newContent = document.getElementById('gamesTextArea').value.trim();
-      
-      if (!newContent) {
-        alert("⚠️ Please enter some content.");
-        return;
-      }
-
       try {
-        // First, try to update existing games entry
-        const response = await fetch(apiURL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ 
-            data: [{ 
-              name: "Upcoming Games Content", 
-              type: "games", 
-              url: newContent 
-            }] 
-          })
-        });
-
-        if (response.ok) {
-          alert("✅ Games content updated successfully!");
-          closeModal('adminModal');
-          loadGamesContent(); // Refresh the content
-        } else {
-          throw new Error('Failed to update content');
+        // Update each game
+        for (let i = 1; i <= 4; i++) {
+          const title = document.getElementById(`game${i}Title`).value.trim();
+          const image = document.getElementById(`game${i}Image`).value.trim();
+          const description = document.getElementById(`game${i}Description`).value.trim();
+          const date = document.getElementById(`game${i}Date`).value.trim();
+          const status = document.getElementById(`game${i}Status`).value;
+          
+          // Only save if at least title is provided
+          if (title) {
+            const gameData = {
+              title,
+              image,
+              description,
+              date,
+              status
+            };
+            
+            const response = await fetch(apiURL, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({ 
+                data: [{ 
+                  name: `Game ${i}`, 
+                  type: `game${i}`, 
+                  url: JSON.stringify(gameData)
+                }] 
+              })
+            });
+            
+            if (!response.ok) {
+              throw new Error(`Failed to update Game ${i}`);
+            }
+          }
         }
+
+        alert("✅ All games updated successfully!");
+        closeModal('adminModal');
+        loadGamesContent(); // Refresh the content
+        
       } catch (error) {
-        console.error('Error updating games content:', error);
-        alert("❌ Error updating content. Please try again.");
+        console.error('Error updating games:', error);
+        alert("❌ Error updating games. Please try again.");
       }
     }
 
