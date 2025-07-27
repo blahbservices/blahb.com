@@ -529,18 +529,19 @@
   </div>
 
   <script>
-    const apiURL = "https://sheetdb.io/api/v1/df3xmfw0i5ido";
+    const apiURL = "https://sheetdb.io/api/v1/df3xmfw0i5ido"; // Main site API
+    const gamesApiURL = "https://sheetdb.io/api/v1/schjt3602up28"; // Games API
 
     async function loadGamesContent() {
       try {
         showLoading(true);
-        const response = await fetch(apiURL);
-        if (!response.ok) throw new Error('Failed to fetch content');
         
-        const data = await response.json();
+        // Load general games content from main API
+        const mainResponse = await fetch(apiURL);
+        if (!mainResponse.ok) throw new Error('Failed to fetch main content');
+        const mainData = await mainResponse.json();
         
-        // Load general games content
-        const gamesData = data.find(item => item.type === 'games');
+        const gamesData = mainData.find(item => item.type === 'games');
         const content = gamesData ? gamesData.url : `
           <h2>🎮 Welcome to Our Gaming Universe!</h2>
           <p>We're working on some incredible games that will blow your mind! Our development team is putting together experiences that combine cutting-edge technology with engaging gameplay.</p>
@@ -558,12 +559,19 @@
         
         document.getElementById('gamesContent').innerHTML = content;
         
-        // Load individual game cards
-        loadGameCards(data);
+        // Load individual game cards from games API
+        const gamesResponse = await fetch(gamesApiURL);
+        if (gamesResponse.ok) {
+          const gamesData = await gamesResponse.json();
+          loadGameCards(gamesData || []);
+        } else {
+          loadGameCards([]);
+        }
         
       } catch (error) {
         console.error('Error loading games content:', error);
         document.getElementById('gamesContent').innerHTML = '<p>Error loading content. Please try again later.</p>';
+        loadGameCards([]);
       } finally {
         showLoading(false);
       }
@@ -573,7 +581,7 @@
       const gamesGrid = document.getElementById('gamesGrid');
       let gameCards = '';
       
-      // Count how many games exist in database
+      // Count how many games exist in games database
       let gameCount = 0;
       for (let i = 1; i <= 20; i++) { // Check up to 20 games
         const gameData = data.find(item => item.type === `game${i}`);
@@ -590,7 +598,7 @@
         
         if (gameData) {
           try {
-            const game = JSON.parse(gameData.url);
+            const game = JSON.parse(gameData.data);
             gameCards += createGameCard(game);
           } catch (e) {
             gameCards += createEmptyGameCard(i);
@@ -675,7 +683,7 @@
 
     async function loadAdminData() {
       try {
-        const response = await fetch(apiURL);
+        const response = await fetch(gamesApiURL);
         const data = await response.json();
         
         // Clear existing admin grid
@@ -702,7 +710,7 @@
           const gameData = data.find(item => item.type === `game${i}`);
           if (gameData) {
             try {
-              const game = JSON.parse(gameData.url);
+              const game = JSON.parse(gameData.data);
               document.getElementById(`game${i}Title`).value = game.title || '';
               document.getElementById(`game${i}Image`).value = game.image || '';
               document.getElementById(`game${i}Description`).value = game.description || '';
@@ -722,6 +730,13 @@
         }
       } catch (error) {
         console.error('Error loading admin data:', error);
+        // If games API fails, still show 4 empty slots
+        const adminGrid = document.getElementById('gamesAdminGrid');
+        adminGrid.innerHTML = '';
+        window.currentGameCount = 4;
+        for (let i = 1; i <= 4; i++) {
+          createAdminGameCard(i);
+        }
       }
     }
 
@@ -833,7 +848,7 @@
             
             console.log(`Saving Game ${i}:`, gameData); // Debug log
             
-            const response = await fetch(apiURL, {
+            const response = await fetch(gamesApiURL, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json"
@@ -842,7 +857,7 @@
                 data: [{ 
                   name: `Game ${i}`, 
                   type: `game${i}`, 
-                  url: JSON.stringify(gameData)
+                  data: JSON.stringify(gameData)
                 }] 
               })
             });
