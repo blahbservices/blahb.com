@@ -7,10 +7,10 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
     :root {
-      --primary: #667eea;
-      --primary-dark: #5a67d8;
-      --secondary: #764ba2;
-      --accent: #f093fb;
+      --primary: #4a90e2;
+      --primary-dark: #357abd;
+      --secondary: #1e3a8a;
+      --accent: #60a5fa;
       --dark: #1a202c;
       --light: #f7fafc;
       --success: #48bb78;
@@ -29,7 +29,7 @@
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 25%, #0ea5e9 75%, #0284c7 100%);
       min-height: 100vh;
       color: var(--dark);
       overflow-x: hidden;
@@ -68,6 +68,12 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 1rem;
+      position: relative;
+    }
+
+    .admin-btn-left {
+      position: absolute;
+      left: 0;
     }
 
     .logo {
@@ -107,7 +113,7 @@
     }
 
     .btn-primary {
-      background: linear-gradient(45deg, var(--accent), var(--primary));
+      background: linear-gradient(45deg, #3b82f6, #1d4ed8);
       color: white;
       box-shadow: var(--shadow);
     }
@@ -355,7 +361,7 @@
 
     .download-btn {
       width: 100%;
-      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      background: linear-gradient(45deg, #3b82f6, #1e40af);
       color: white;
       text-align: center;
       padding: 0.75rem;
@@ -530,6 +536,9 @@
   
   <header>
     <div class="header-content">
+      <button class="btn admin-btn admin-btn-left" onclick="requestAdminAccess()">
+        <i class="fas fa-cog"></i> Admin
+      </button>
       <div class="logo">
       </div>
       <div class="nav-buttons">
@@ -538,9 +547,6 @@
         </button>
         <button class="btn btn-glass" onclick="showModal('games')">
           <i class="fas fa-gamepad"></i> Upcoming Games
-        </button>
-        <button class="btn admin-btn" onclick="requestAdminAccess()">
-          <i class="fas fa-cog"></i> Admin
         </button>
       </div>
     </div>
@@ -806,7 +812,7 @@
 
     function requestAdminAccess() {
       const password = prompt("🔐 Enter admin password:");
-      if (password === "admin123") {
+      if (password === "GregIsCool") {
         showModal('adminModal');
       } else {
         alert("❌ Incorrect password. Access denied.");
