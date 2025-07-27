@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blahb - Premium Digital Content That Stands Out</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #667eea;
+      --primary-dark: #5a67d8;
+      --secondary: #764ba2;
+      --accent: #f093fb;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --error: #ef4444;
+      --dark: #1f2937;
+      --light: #f8fafc;
+      --glass: rgba(255, 255, 255, 0.1);
+      --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      --border: rgba(255, 255, 255, 0.18);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    .floating-particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .particle:nth-child(1) { left: 10%; width: 80px; height: 80px; animation-delay: 0s; }
+    .particle:nth-child(2) { left: 20%; width: 20px; height: 20px; animation-delay: 0.5s; }
+    .particle:nth-child(3) { left: 25%; width: 60px; height: 60px; animation-delay: 1s; }
+    .particle:nth-child(4) { left: 40%; width: 120px; height: 120px; animation-delay: 1.5s; }
+    .particle:nth-child(5) { left: 70%; width: 40px; height: 40px; animation-delay: 2s; }
+    .particle:nth-child(6) { left: 80%; width: 100px; height: 100px; animation-delay: 2.5s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.5; }
+      50% { transform: translateY(-100px) rotate(180deg); opacity: 0.8; }
+    }
+
+    header {
+      backdrop-filter: blur(20px);
+      background: var(--glass);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: white;
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .logo i {
+      font-size: 2.5rem;
+      background: linear-gradient(45deg, var(--accent), #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .header-cta {
+      background: linear-gradient(45deg, #ff0000, #cc0000);
+      color: white;
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 50px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .header-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 0, 0, 0.6);
+    }
+
+    .hero-section {
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      border: 1px solid var(--border);
+    }
+
+    .hero-title {
+      font-size: 4.5rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 2rem;
+      background: linear-gradient(45deg, #fff, var(--accent), #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -2px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 4rem;
+    }
+
+    .cta-primary {
+      background: linear-gradient(45deg, var(--success), #34d399);
+      color: white;
+      padding: 1.2rem 3rem;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .cta-primary:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px rgba(16, 185, 129, 0.6);
+    }
+
+    .cta-secondary {
+      background: var(--glass);
+      color: white;
+      padding: 1.2rem 3rem;
+      border: 2px solid var(--border);
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .cta-secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .social-proof {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .proof-item {
+      text-align: center;
+    }
+
+    .proof-number {
+      font-size: 2.5rem;
+      font-weight: 900;
+      display: block;
+      background: linear-gradient(45deg, #fff, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .proof-label {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.7;
+    }
+
+    .features-section {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 2rem;
+      margin: 2rem 0;
+    }
+
+    .features-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .features-title {
+      font-size: 3rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .features-subtitle {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      background: linear-gradient(45deg, var(--accent), #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .feature-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .feature-desc {
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+    }
+
+    .gallery-section {
+      padding: 4rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-size: 3rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-tab {
+      padding: 1rem 2rem;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50px;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .filter-tab:hover,
+    .filter-tab.active {
+      background: white;
+      color: var(--primary);
+      border-color: white;
+      transform: translateY(-2px);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: linear-gradient(45deg, var(--success), #34d399);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      z-index: 10;
+    }
+
+    .product-preview {
+      height: 200px;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-preview img,
+    .product-preview video,
+    .product-preview audio {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-preview .placeholder {
+      font-size: 3rem;
+      color: #cbd5e1;
+    }
+
+    .product-info {
+      padding: 1.5rem;
+    }
+
+    .product-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+
+    .product-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      color: #64748b;
+    }
+
+    .download-btn {
+      width: 100%;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 1rem;
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+      padding: 6rem 2rem;
+      text-align: center;
+      margin: 4rem 0 0;
+    }
+
+    .cta-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cta-title {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: white;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .cta-description {
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 3rem;
+      line-height: 1.6;
+    }
+
+    .cta-button {
+      background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+      color: white;
+      padding: 1.5rem 4rem;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 8px 30px rgba(255, 107, 107, 0.4);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px rgba(255, 107, 107, 0.6);
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      width: 90%;
+      max-width: 500px;
+      position: relative;
+    }
+
+    .loading {
+      display: none;
+      text-align: center;
+      padding: 3rem;
+      color: white;
+    }
+
+    .spinner {
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top: 4px solid white;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 1rem;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: white;
+    }
+
+    .empty-state i {
+      font-size: 5rem;
+      opacity: 0.3;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 3rem;
+      }
+
+      .hero-cta-group {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .cta-primary,
+      .cta-secondary {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .social-proof {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .filter-tabs {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="floating-particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
+  <header>
+    <div class="header-content">
+      <div class="logo">
+        <i class="fas fa-bolt"></i>
+        <span>Blahb</span>
+      </div>
+      <a href="https://www.youtube.com/@gregoryrockstar1992" target="_blank" class="header-cta">
+        <i class="fab fa-youtube"></i> YouTube
+      </a>
+    </div>
+  </header>
+
+  <section class="hero-section">
+    <div class="hero-badge">
+      ✨ Curated Premium Content Collection
+    </div>
+    <h1 class="hero-title">Premium Digital Content That Makes You Stand Out</h1>
+    <p class="hero-subtitle">
+      Discover stunning wallpapers, exclusive ringtones, and captivating videos that transform your digital experience. Quality content that speaks volumes.
+    </p>
+    <div class="hero-cta-group">
+      <a href="#gallery" class="cta-primary" onclick="scrollToGallery()">
+        <i class="fas fa-download"></i> Start Downloading
+      </a>
+      <a href="#features" class="cta-secondary">
+        <i class="fas fa-play"></i> See What's Inside
+      </a>
+    </div>
+    <div class="social-proof">
+      <div class="proof-item">
+        <span class="proof-number">100%</span>
+        <span class="proof-label">Free Access</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="features-section" id="features">
+    <div class="features-container">
+      <h2 class="features-title">Why Choose Blahb?</h2>
+      <p class="features-subtitle">
+        We don't just provide content – we deliver experiences that elevate your digital lifestyle
+      </p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-gem"></i>
+          </div>
+          <h3 class="feature-title">Premium Quality</h3>
+          <p class="feature-desc">Every file is handpicked and optimized for the best experience across all your devices.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3 class="feature-title">Lightning Fast</h3>
+          <p class="feature-desc">Instant downloads with no waiting time. Get what you want, when you want it.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3 class="feature-title">100% Safe</h3>
+          <p class="feature-desc">All content is verified and completely safe. No malware, no spam, just pure quality.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-magic"></i>
+          </div>
+          <h3 class="feature-title">Exclusive Content</h3>
+          <p class="feature-desc">Access unique designs and sounds you won't find anywhere else on the internet.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3 class="feature-title">All Devices</h3>
+          <p class="feature-desc">Perfect compatibility with phones, tablets, desktops, and smart devices.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h3 class="feature-title">Always Free</h3>
+          <p class="feature-desc">Premium quality doesn't have to cost premium prices. Everything is completely free.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery-section" id="gallery">
+    <div class="section-header">
+      <h2 class="section-title">Browse Our Collection</h2>
+      <p class="section-subtitle">
+        Thousands of premium files waiting for you. Find the perfect content that matches your style.
+      </p>
+    </div>
+
+    <div class="filter-tabs">
+      <button class="filter-tab active" onclick="filterFiles('all')" data-type="all">
+        <i class="fas fa-th"></i> All Content
+      </button>
+      <button class="filter-tab" onclick="filterFiles('image')" data-type="image">
+        <i class="fas fa-image"></i> Wallpapers
+      </button>
+      <button class="filter-tab" onclick="filterFiles('audio')" data-type="audio">
+        <i class="fas fa-music"></i> Ringtones
+      </button>
+      <button class="filter-tab" onclick="filterFiles('video')" data-type="video">
+        <i class="fas fa-video"></i> Videos
+      </button>
+    </div>
+
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <h3>Loading amazing content...</h3>
+      <p>Preparing the best files just for you</p>
+    </div>
+
+    <div class="gallery" id="gallery-grid"></div>
+
+    <div class="empty-state" id="emptyState" style="display: none;">
+      <i class="fas fa-search"></i>
+      <h3>No content found</h3>
+      <p>Try browsing a different category or check back soon for new uploads</p>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="cta-container">
+      <h2 class="cta-title">Ready to Transform Your Digital Experience?</h2>
+      <p class="cta-description">
+        Join thousands of users who have already discovered the Blahb difference. Start downloading premium content today and see why we're the #1 choice for digital enthusiasts.
+      </p>
+      <a href="#gallery" class="cta-button" onclick="scrollToGallery()">
+        <i class="fas fa-rocket"></i> Get Started Now
+      </a>
+    </div>
+  </section>
+
+  <!-- Admin Modal -->
+  <div class="modal" id="adminModal">
+    <div class="modal-content">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+        <h2 style="color: var(--dark);"><i class="fas fa-cog"></i> Content Manager</h2>
+        <button onclick="closeModal('adminModal')" style="background: #e5e7eb; border: none; border-radius: 50%; width: 35px; height: 35px; cursor: pointer;">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <form onsubmit="submitFile(event)">
+        <div style="margin-bottom: 1rem;">
+          <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Content Name</label>
+          <input type="text" id="fileName" placeholder="Enter content name" required style="width: 100%; padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px;">
+        </div>
+        <div style="margin-bottom: 1rem;">
+          <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Content Type</label>
+          <select id="fileType" required style="width: 100%; padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px;">
+            <option value="image">🖼️ Wallpaper</option>
+            <option value="audio">🎵 Ringtone</option>
+            <option value="video">🎬 Video</option>
+            <option value="about">📝 About Info</option>
+            <option value="games">🎮 Games Info</option>
+          </select>
+        </div>
+        <div style="margin-bottom: 1rem;">
+          <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Content URL</label>
+          <input type="url" id="fileURL" placeholder="Direct download link or content" required style="width: 100%; padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px;">
+        </div>
+        <button type="submit" class="cta-primary" style="width: 100%; margin: 0;">
+          <i class="fas fa-plus"></i> Add Content
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const apiURL = "https://sheetdb.io/api/v1/df3xmfw0i5ido";
+    let allFiles = [];
+    let filteredFiles = [];
+
+    const contentTypeIcons = {
+      image: 'fas fa-image',
+      audio: 'fas fa-music',
+      video: 'fas fa-video'
+    };
+
+    const contentTypeBadges = {
+      image: 'HD Wallpaper',
+      audio: 'Premium Audio',
+      video: 'High Quality'
+    };
+
+    async function fetchFiles() {
+      try {
+        showLoading(true);
+        const response = await fetch(apiURL);
+        if (!response.ok) throw new Error('Failed to fetch files');
+        
+        const files = await response.json();
+        allFiles = files || [];
+        filteredFiles = allFiles.filter(f => ['image', 'audio', 'video'].includes(f.type));
+        
+        displayFiles(filteredFiles);
+        updateStats();
+        
+        const aboutFile = allFiles.find(f => f.type === 'about');
+        const gamesFile = allFiles.find(f => f.type === 'games');
+        window.aboutText = aboutFile ? aboutFile.url : 'Blahb is your premium destination for high-quality digital content. We curate the finest wallpapers, ringt
