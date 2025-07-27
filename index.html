@@ -545,7 +545,7 @@
         <button class="btn btn-glass" onclick="showModal('about')">
           <i class="fas fa-user"></i> About
         </button>
-        <button class="btn btn-glass" onclick="showModal('games')">
+        <button class="btn btn-glass" onclick="window.open('upcominggames.html', '_blank')">
           <i class="fas fa-gamepad"></i> Upcoming Games
         </button>
       </div>
@@ -813,8 +813,7 @@
     function requestAdminAccess() {
       const password = prompt("🔐 Enter admin password:");
       if (password === "GregIsCool") {
-        sessionStorage.setItem('adminAuthorized', 'true');
-        window.location.href = 'admin.html';
+        showModal('adminModal');
       } else {
         alert("❌ Incorrect password. Access denied.");
       }
