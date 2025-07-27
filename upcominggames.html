@@ -707,7 +707,14 @@
               document.getElementById(`game${i}Image`).value = game.image || '';
               document.getElementById(`game${i}Description`).value = game.description || '';
               document.getElementById(`game${i}Date`).value = game.date || '';
-              document.getElementById(`game${i}Status`).value = game.status || 'development';
+              
+              // Set status with a small delay to ensure the select element is fully rendered
+              setTimeout(() => {
+                const statusElement = document.getElementById(`game${i}Status`);
+                if (statusElement) {
+                  statusElement.value = game.status || 'development';
+                }
+              }, 100);
             } catch (e) {
               clearGameFields(i);
             }
@@ -804,23 +811,27 @@
           const statusElement = document.getElementById(`game${i}Status`);
           
           // Skip if elements don't exist
-          if (!titleElement) continue;
+          if (!titleElement || !statusElement) continue;
           
           const title = titleElement.value.trim();
-          const image = imageElement.value.trim();
-          const description = descriptionElement.value.trim();
-          const date = dateElement.value.trim();
+          const image = imageElement ? imageElement.value.trim() : '';
+          const description = descriptionElement ? descriptionElement.value.trim() : '';
+          const date = dateElement ? dateElement.value.trim() : '';
           const status = statusElement.value;
+          
+          console.log(`Game ${i} status before save:`, status); // Debug log
           
           // Only save if at least title is provided
           if (title) {
             const gameData = {
-              title,
-              image,
-              description,
-              date,
-              status
+              title: title,
+              image: image,
+              description: description,
+              date: date,
+              status: status
             };
+            
+            console.log(`Saving Game ${i}:`, gameData); // Debug log
             
             const response = await fetch(apiURL, {
               method: "POST",
@@ -837,7 +848,10 @@
             });
             
             if (!response.ok) {
+              console.error(`Failed to update Game ${i}:`, await response.text());
               throw new Error(`Failed to update Game ${i}`);
+            } else {
+              console.log(`Game ${i} saved successfully`);
             }
           }
         }
