@@ -817,7 +817,7 @@
       try {
         const gameCount = window.currentGameCount || 4;
         
-        // Update each game
+        // Update each game individually
         for (let i = 1; i <= gameCount; i++) {
           const titleElement = document.getElementById(`game${i}Title`);
           const imageElement = document.getElementById(`game${i}Image`);
@@ -834,7 +834,10 @@
           const date = dateElement ? dateElement.value.trim() : '';
           const status = statusElement.value;
           
-          console.log(`Game ${i} status before save:`, status); // Debug log
+          console.log(`Processing Game ${i} - Title: "${title}"`); // Debug log
+          
+          // Delete existing entry for this specific game first
+          await deleteSpecificGame(i);
           
           // Only save if at least title is provided
           if (title) {
@@ -868,6 +871,8 @@
             } else {
               console.log(`Game ${i} saved successfully`);
             }
+          } else {
+            console.log(`Game ${i} is empty, only deleted existing data`);
           }
         }
 
@@ -878,6 +883,23 @@
       } catch (error) {
         console.error('Error updating games:', error);
         alert("❌ Error updating games. Please try again.");
+      }
+    }
+
+    async function deleteSpecificGame(gameNumber) {
+      try {
+        const deleteResponse = await fetch(`${gamesApiURL}/type/game${gameNumber}`, {
+          method: "DELETE"
+        });
+        
+        if (deleteResponse.ok) {
+          console.log(`Deleted existing data for Game ${gameNumber}`);
+        } else {
+          console.log(`No existing data found for Game ${gameNumber} (or delete failed)`);
+        }
+      } catch (deleteError) {
+        console.warn(`Could not delete Game ${gameNumber}:`, deleteError);
+        // Continue even if delete fails
       }
     }
 
